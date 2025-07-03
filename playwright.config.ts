@@ -1,7 +1,7 @@
 import { defineConfig } from "@playwright/test";
 
 export default defineConfig({
-  testDir: "./tests", // ✅ ここが tests/
+  testDir: "./__tests__", // ✅ ここが tests/
   testMatch: "**/*.spec.ts", // ✅ 拡張子が .spec.ts であること
   use: {
     baseURL: "http://localhost:3000", // Next.js devサーバーのURL
