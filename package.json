@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "vitest",
+    "test:e2e": "playwright test", 
     "test:rules": "npx firebase emulators:exec \"vitest run tests/firestore.rules.test.ts\""
   },
   "dependencies": {
