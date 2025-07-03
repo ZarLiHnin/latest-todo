@@ -1,12 +1,11 @@
-// stores/searchStore.ts
 import { create } from "zustand";
 
 type SearchState = {
   keyword: string;
-  setKeyword: (k: string) => void;
+  setKeyword: (kw: string) => void;
 };
 
 export const useSearchStore = create<SearchState>((set) => ({
   keyword: "",
-  setKeyword: (k) => set({ keyword: k }),
+  setKeyword: (kw) => set({ keyword: kw }),
 }));
