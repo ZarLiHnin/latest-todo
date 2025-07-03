@@ -9,12 +9,12 @@ test("Todoアプリの一連の流れをテスト", async ({ page }) => {
   await page.click("text=登録へ");
 
   // 3️⃣ 登録フォームに入力して登録
-  await page.fill('input[type="email"]', "testuser3@example.com");
+  await page.fill('input[type="email"]', "testuser@example.com");
   await page.fill('input[type="password"]', "password123");
   await page.click("button:has-text('登録')");
 
   // 4️⃣ 自動リダイレクト後、ログイン
-  await page.fill('input[type="email"]', "testuser3@example.com");
+  await page.fill('input[type="email"]', "testuser@example.com");
   await page.fill('input[type="password"]', "password123");
   await page.click("button:has-text('ログイン')");
 
