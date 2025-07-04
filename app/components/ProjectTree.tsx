@@ -116,7 +116,7 @@ export default function ProjectTree({
                   </button>
                   <button
                     onClick={() => handleDelete(node.id)}
-                    className="text-sm text-red-600 hover:text-red-800 transition"
+                    className="text-sm text-red-700 hover:text-red-800 transition"
                   >
                     削除
                   </button>

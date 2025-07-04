@@ -98,7 +98,7 @@ export default function ProjectTasksPage() {
         </div>
         <button
           onClick={handleLogout}
-          className="bg-red-500 hover:bg-red-600 py-1 px-3 rounded-md transition"
+          className="bg-red-600 hover:bg-red-700 py-1 px-3 rounded-md transition"
         >
           ログアウト
         </button>
@@ -127,7 +127,7 @@ export default function ProjectTasksPage() {
           </h2>
           {filteredTasks.length > 0 ? (
             <TaskList
-              tasks={filteredTasks}
+              tasks={tasks ?? []}
               labels={labels}
               projects={projects}
               onTasksChanged={() =>

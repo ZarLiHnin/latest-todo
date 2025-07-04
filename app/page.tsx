@@ -28,7 +28,7 @@ export default function HomePage() {
         </div>
         <button
           onClick={handleLogout}
-          className="bg-red-500 hover:bg-red-600 py-1 px-3 rounded transition"
+          className="bg-red-600 hover:bg-red-700 py-1 px-3 rounded transition"
         >
           ログアウト
         </button>

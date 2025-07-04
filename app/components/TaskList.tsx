@@ -131,13 +131,22 @@ export default function TaskList({
         dateFilter === "today" ? endOfToday() : endOfDay(addDays(start, 7));
       if (!(due >= start && due <= end)) return false;
     }
+
     // ラベルフィルター
-    if (labelFilter) {
+    if (labelFilter && labelFilter !== "all") {
       const ids = taskLabelsMap[task.id]?.map((l) => l.id) ?? [];
       if (!ids.includes(labelFilter)) return false;
     }
+
     // プロジェクトフィルター
-    if (projectFilter && task.projectId !== projectFilter) return false;
+    if (
+      projectFilter &&
+      projectFilter !== "all" &&
+      task.projectId !== projectFilter
+    ) {
+      return false;
+    }
+
     return true;
   });
 
@@ -304,7 +313,7 @@ export default function TaskList({
               {editingId !== task.id && (
                 <button
                   onClick={() => deleteTaskById(task.id)}
-                  className="text-red-600 hover:underline"
+                  className="text-red-700 hover:underline"
                 >
                   削除
                 </button>

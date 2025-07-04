@@ -155,7 +155,7 @@ export default function LabelManager({ ownerId }: Props) {
                 </button>
                 <button
                   onClick={() => handleDelete(label.id)}
-                  className="text-red-600 hover:underline ml-2"
+                  className="text-red-700 hover:underline ml-2"
                 >
                   削除
                 </button>

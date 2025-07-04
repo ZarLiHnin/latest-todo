@@ -1,19 +1,17 @@
-// app/layout.tsx
-"use client";
 import "./globals.css";
+import { ReactNode } from "react";
+import Providers from "./providers";
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactNode, useState } from "react";
+export const metadata = {
+  title: "My Task App",
+  description: "あなたのタスク管理アプリ",
+};
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-  const [queryClient] = useState(() => new QueryClient());
-
   return (
     <html lang="ja">
       <body>
-        <QueryClientProvider client={queryClient}>
-          {children}
-        </QueryClientProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
