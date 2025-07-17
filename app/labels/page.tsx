@@ -30,23 +30,47 @@ export default function LabelSettingsPage() {
 
   const handleLogout = async () => {
     await signOut(auth);
-    router.push("/auth"); // ← サインアウト後に /auth へ遷移
+    router.push("/auth");
   };
+
+  const handleLogin = () => {
+    router.push("/auth"); // 認証ページへ遷移
+  };
+
+  const isAnonymous = user?.isAnonymous;
 
   return (
     <>
       <AnimatedBackground />
       <header className="flex justify-between items-center p-4 bg-blue-600 text-white relative z-10">
         <div>
-          ログイン中:{" "}
-          <strong>{user.email ?? user.displayName ?? "ユーザー"}</strong>
+          {user && !isAnonymous ? (
+            <>
+              ログイン中:{" "}
+              <strong>{user.email ?? user.displayName ?? "ユーザー"}</strong>
+            </>
+          ) : (
+            "ログインしていません"
+          )}
         </div>
-        <button
-          onClick={handleLogout}
-          className="bg-red-600 hover:bg-red-700 py-1 px-3 rounded transition"
-        >
-          ログアウト
-        </button>
+
+        {user ? (
+          isAnonymous ? (
+            <button
+              onClick={handleLogin}
+              className="bg-green-600 hover:bg-green-700 py-1 px-3 rounded transition"
+            >
+              ログイン
+            </button>
+          ) : (
+            <button
+              onClick={handleLogout}
+              className="bg-red-600 hover:bg-red-700 py-1 px-3 rounded transition"
+            >
+              ログアウト
+            </button>
+          )
+        ) : null}
       </header>
 
       <main className="max-w-xl mx-auto py-10 px-4 relative z-10">

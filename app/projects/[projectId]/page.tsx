@@ -56,10 +56,13 @@ export default function ProjectTasksPage() {
 
   const filteredTasks = tasks?.filter((t) => t.projectId === projectId) ?? [];
 
-  // ログアウト
   const handleLogout = async () => {
     await signOut(auth);
     router.push("/auth");
+  };
+
+  const handleLogin = () => {
+    router.push("/auth"); // 認証ページへ遷移
   };
 
   // 読み込み中
@@ -86,6 +89,8 @@ export default function ProjectTasksPage() {
     );
   }
 
+  const isAnonymous = user?.isAnonymous;
+
   return (
     <>
       <AnimatedBackground />
@@ -93,15 +98,33 @@ export default function ProjectTasksPage() {
       {/* ヘッダー */}
       <header className="relative z-10 flex justify-between items-center p-4 bg-blue-600 text-white">
         <div>
-          ログイン中:{" "}
-          <strong>{user.email ?? user.displayName ?? "ユーザー"}</strong>
+          {user && !isAnonymous ? (
+            <>
+              ログイン中:{" "}
+              <strong>{user.email ?? user.displayName ?? "ユーザー"}</strong>
+            </>
+          ) : (
+            "ログインしていません"
+          )}
         </div>
-        <button
-          onClick={handleLogout}
-          className="bg-red-600 hover:bg-red-700 py-1 px-3 rounded-md transition"
-        >
-          ログアウト
-        </button>
+
+        {user ? (
+          isAnonymous ? (
+            <button
+              onClick={handleLogin}
+              className="bg-green-600 hover:bg-green-700 py-1 px-3 rounded transition"
+            >
+              ログイン
+            </button>
+          ) : (
+            <button
+              onClick={handleLogout}
+              className="bg-red-600 hover:bg-red-700 py-1 px-3 rounded transition"
+            >
+              ログアウト
+            </button>
+          )
+        ) : null}
       </header>
 
       {/* コンテンツ */}
